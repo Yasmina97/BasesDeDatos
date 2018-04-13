@@ -1,0 +1,14 @@
+SELECT equipo, COUNT (*)
+FROM
+(
+  SELECT equipo
+  FROM resultados R1
+  WHERE R1.accion = asciende
+  UNION
+  SELECT equipo
+  FROM resultados R2
+  WHERE R2.accion = ganador AND R2.div = 2
+)
+GROUP BY equipo
+ORDER BY COUNT (*) DESC
+WHERE rownum <= 5
