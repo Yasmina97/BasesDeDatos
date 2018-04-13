@@ -64,6 +64,8 @@ CREATE TABLE Resultado (
     puntos number(3) NOT NULL,
     puesto number(2) NOT NULL,
     accion varchar(30),
+    golesFavor number(5),
+    golesContra number(5),
     PRIMARY KEY (nombreEquipo, anyoJornada, numeroJornada, divisionJornada),
     FOREIGN KEY (nombreEquipo) REFERENCES Equipo(nombreOficial),
     FOREIGN KEY (anyoJornada,numeroJornada,divisionJornada) REFERENCES Jornada(anyo,numero,division)
