@@ -1,0 +1,13 @@
+SELECT DISTINCT equipo
+FROM resultados R1
+WHERE R1.div = 1
+INTERSECTS
+(
+  SELECT DISTINCT equipo
+  FROM resultados R2
+  WHERE NOT R2.accion = ganador
+  INTERSECTS
+  SELECT DISTINCT equipo
+  FROM resultados R3
+  WHERE R3.accion = ganador AND R3.div = 2
+)
