@@ -3,7 +3,7 @@
 SELECT *	--Todas las producciones con una keyword = CIUDAD
 FROM
   (
-  SELECT t.IDproduccion
+  SELECT t.idProduccion
   FROM Tiene as t
   WHERE t.palabra = <CIUDAD>
   ) A
@@ -11,16 +11,16 @@ FROM
 SELECT *	--Todas las producciones con actores cuyo origen = CIUDAD
 FROM
   (
-  SELECT e.IDproduccion
+  SELECT e.idProduccion
   FROM Persona as p1 JOIN Empleado as e
-  ON p1.IDpersona = e.IDpersona
+  ON p1.idPersona = e.idPersona
   WHERE p1.ciudad = <CIUDAD> AND ( e.puesto = "Actor" OR e.puesto = "Actress" )
   ) B
 
-SELECT p2.nombre, p2.año, @CAUSA = "keyword"		--Nombre, año y causa de todos los resultados
+SELECT p2.nombre, p2.anyo, @CAUSA = "keyword"		--Nombre, anyo y causa de todos los resultados
 FROM A JOIN Produccion as p2
-ON A.IDproduccion = p2.IDproduccion
+ON A.idProduccion = p2.idProduccion
 UNION
-SELECT p3.nombre, p3.año, @CAUSA = "origenActor"
+SELECT p3.nombre, p3.anyo, @CAUSA = "origenActor"
 FROM B JOIN Produccion as p3
-ON B.IDproduccion = p3.IDproduccion
+ON B.idProduccion = p3.idProduccion

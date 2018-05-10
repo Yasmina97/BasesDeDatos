@@ -1,63 +1,53 @@
 --Directores que empezaron como actores/actrices
 
-
-
 SELECT *		--Directores y sus peliculas
 FROM
   (
-  SELECT p1.nombre, e1.IDproduccion
-
+  SELECT p1.idPersona, e1.idProduccion
   FROM Empleado as e1 JOIN Persona as p1
-
-  ON e1.IDpersona = p1.IDpersona
-
+  ON e1.idPersona = p1.idPersona
   WHERE e1.puesto = "Director"
-  ) A
+  ) A
 
 
-
-
-SELECT *		--1ª ocurrencia de director y año (de la primera)
+SELECT *		--1a ocurrencia de director y anyo (de la primera)
 FROM
   (
-  SELECT A.nombre, p2.año
+  SELECT A.idPersona, p2.anyo
   FROM A JOIN Produccion as p2
-
-  ON A.IDproduccion = p2.IDproduccion
-
-  GROUP BY A.nombre
+  ON A.idProduccion = p2.idProduccion
+  GROUP BY A.idPersona
   ) C
 
 SELECT *		--Actores y sus peliculas
 FROM
   (
-
-  SELECT p3.nombre, e2.IDproduccion
+  SELECT p3.idPersona, e2.idProduccion
   FROM Empleado as e2 JOIN Persona as p3
-
-  ON e2.IDpersona = p3.IDpersona
-
+  ON e2.idPersona = p3.idPersona
   WHERE e2.puesto = "Actor" OR e2.puesto = "Actress"
   ) B
 
-SELECT *		--1ª ocurrencia de actor y año (de la primera)
+SELECT *		--1a ocurrencia de actor y anyo (de la primera)
 FROM
   (
-
-  SELECT B.nombre, p4.año
+  SELECT B.idPersona, p4.anyo
   FROM B JOIN Produccion as p4
-
-  ON B.IDproduccion = p4.IDproduccion
-
-  GROUP BY B.nombre
-
-
+  ON B.idProduccion = p4.idProduccion
+  GROUP BY B.idPersona
   ) D
 
-SELECT C.nombre		--Personas cuyo primer año de direccion es 
 
-FROM C JOIN D		--posterior a su primer año de actor
+SELECT *		--Personas cuyo primer anyo de direccion es
+FROM			--posterior a su primer anyo de actor
+  (
+  SELECT C.idPersona
+  FROM C JOIN D
+  ON C.idPersona = D.idPersona 
+  WHERE C.anyo > D.anyo
+  ) E
 
-ON C.nombre = D.nombre
 
-WHERE C.año > D.año
+SELECT p5.nombrePersona		--Nombres reales de las personas resultantes
+FROM E JOIN Persona as p5
+ON p5.idPersona = E.idPersona
