@@ -1,5 +1,7 @@
 --Dada <CIUDAD>, dar pelis que esten relacionadas de alguna forma con esa ciudad
 
+DECLARE @CAUSA varchar(60)
+
 SELECT *	--Todas las producciones con una keyword = <CIUDAD>
 FROM
   (
