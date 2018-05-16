@@ -3,12 +3,12 @@ CREATE TABLE Persona (
     idPersona  		NUMBER(11) PRIMARY KEY,
     nombrePersona   VARCHAR(80),
     generoP         VARCHAR(4),
-    lugarOrigen     VARCHAR(80)
+    lugarOrigen     VARCHAR(200)
 );
 
 CREATE TABLE Produccion (
     idProduccion 	NUMBER(11) PRIMARY KEY,
-    nombre       	VARCHAR(80),
+    nombre       	VARCHAR(200),
     anyo         	NUMBER(4),
     genero          VARCHAR(80)
 );
