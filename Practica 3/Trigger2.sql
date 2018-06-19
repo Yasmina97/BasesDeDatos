@@ -1,7 +1,7 @@
 
 --Crea un nuevo modelo de avion al insertar un avión con modelo inedito
 
-CREATE OR REPLACE TRIGGER modelonuevo
+CREATE OR REPLACE TRIGGER segundo
 	BEFORE INSERT ON Modelo
 	FOR EACH ROW
 BEGIN
