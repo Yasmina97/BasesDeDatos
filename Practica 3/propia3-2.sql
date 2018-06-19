@@ -4,8 +4,8 @@ SELECT *	--numero de vuelos que llegan a cada estado
 FROM
   (
   SELECT Count(estado), estado
-  FROM Vuelo JOIN Aeropuerto
-  ON Vuelo.aeroDestino = Aeropuerto.IATA
+  FROM VUELO JOIN AEROPUERTO
+  ON VUELO.aeroDestino = AEROPUERTO.iata
   GROUP BY estado
   ) A
 

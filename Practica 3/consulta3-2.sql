@@ -1,13 +1,13 @@
 --Aeropuerto con aviones mas modernos
 
 SELECT DISTINCT aeroOrigen, avion	--aeropuertos con sus aviones
-FROM Vuelo AS A
+FROM VUELO AS A
 
 SELECT *	--cambiar los aviones por su modelo
 FROM
   (
   SELECT aeroOrigen, modelo
-  FROM A JOIN Avion as av
+  FROM A JOIN AVION as av
   ON A.avion = av.matricula
   ) B
 
@@ -15,7 +15,7 @@ SELECT *	--cambiar los modelos por su año
 FROM
   (
   SELECT aeroOrigen, anyo
-  FROM B JOIN Modelo as m
+  FROM B JOIN MODELO as m
   ON B.modelo = m.id
   ) C
 
