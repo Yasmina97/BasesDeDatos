@@ -1,13 +1,13 @@
 
---Crea un nuevo modelo de avion al insertar un avión con modelo inedito
+--Crea un nuevo modelo de avion al insertar un aviÃ³n con modelo inedito
 
 CREATE OR REPLACE TRIGGER modelonuevo
-	BEFORE INSERT ON ModeloAvion
+	BEFORE INSERT ON Modelo
 	FOR EACH ROW
 BEGIN
 	
-	if :NEW.idModelo NOT EXISTS (SELECT * FROM Modelo)  then
-			INSERT INTO Modelo(empresa, idModelo, tipo, motor, anyo) VALUES ('0',:NEW.idModelo,'0','0','0');
+	if :NEW.id NOT EXISTS (SELECT * FROM Modelo)  then
+			INSERT INTO Modelo(id,empresa,nave, tipo, motor, anyo) VALUES (:NEW.id,'0','0','0','0','0');
 	end if;
 	
 end;
