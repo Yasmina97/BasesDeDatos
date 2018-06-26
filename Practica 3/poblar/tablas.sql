@@ -46,16 +46,18 @@ CREATE TABLE INCIDENCIA (
 	tipo			varchar(80),
 	retraso			number(7),
 	vueloAfectado  	number(7),
+	PRIMARY KEY (tipo, vueloAfectado),
 	FOREIGN KEY (vueloAfectado) REFERENCES VUELO(id)
 )
 
 CREATE TABLE DESVIO (
-	id				number(7) PRIMARY KEY,
+	id				number(7),
 	salida  		number(7),
 	llegada  		number(7),
 	aeroDestino		varchar(8),
 	vueloAfectado  	number(7),
 	avionAfectado	varchar(10),
+	PRIMARY KEY (id, vueloAfectado),
 	FOREIGN KEY (aeroDestino) REFERENCES AEROPUERTO(iata),
 	FOREIGN KEY (avionAfectado) REFERENCES AVION(matricula),
 	FOREIGN KEY (vueloAfectado) REFERENCES VUELO(id)
